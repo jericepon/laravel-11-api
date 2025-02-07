@@ -69,4 +69,9 @@ class AuthController extends Controller
     $request->user()->tokens()->delete();
     return response()->json(true, 200);
   }
+
+  public function me(Request $request)
+  {
+    return response()->json($request->user()->with('todos')->first());
+  }
 }
